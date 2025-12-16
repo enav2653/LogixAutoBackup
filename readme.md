@@ -10,9 +10,6 @@ Open with a text editor, and put in the parameters at the top of the program and
 	STABILITY_SECONDS = 1800 #Time from last detected change to backup being queued
 	POLL_INTERVAL = 2.0 #How often tag defined in "MONITOR_TAG_NAME" is checked
 
-	current_last_value = None
-	last_known_value = None
-
 	EXTERNAL_PROGRAM = [
  	   r"python",
 	   r"C:\Users\User\BackupAutomation\QueueAutoUpload.py", #Path to backup automation program
