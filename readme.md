@@ -14,7 +14,7 @@ EXTERNAL_PROGRAM = [
     r"C:\Users\User\BackupAutomation\QueueAutoUpload.py", #Path to backup automation program
     r"--save-dir", #Specifier to save in a user defined directory
     r"C:\Users\User\PLC_ProgramBackups\C0TR2\DSF", #Path to save the backups in
-    r"TR2_Gateway_IS\10.207.134.208\Backplane\2\A\192.168.1.100\Backplane\0" #Path to PLC, copy from program, requires FT Linx
+    r"PATH_TO_PLC\Backplane\0" #Path to PLC, copy from program, requires FT Linx
 	]
 SCRIPT_DIR = r"C:\Users\User\BackupAutomation" #Directory to run the backup program from, usually the directory it is in.
 =================================================================
