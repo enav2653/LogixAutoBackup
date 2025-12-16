@@ -9,24 +9,20 @@ from typing import Any
 from logix_designer_sdk import LogixProject, OperationMode
 
 # ====================== USER CONFIGURATION ======================
-PROJECT_DIR = r"C:\Users\Public\Documents\Studio 5000\Logix Designer SDK\python\Examples\AutomaticBackupProject"
-FILE_STARTS_WITH = "TMMI_C0TR2_PRESS"
-MONITOR_TAG_NAME = "delete_LINT"
-STABILITY_SECONDS = 30
-POLL_INTERVAL = 2.0
-
-current_last_value = None
-last_known_value = None
-
-"C:\Users\572546\OneDrive - TMNA\Documentation\PLC & HMI\Ladder Programs\TR2\PRESS"
+PROJECT_DIR = r"C:\Users\User\PLC_ProgramBackups\C0TR2\DSF" #Directory where to monitor
+FILE_STARTS_WITH = "TMMI_C0TR2_DSF" #What the files start with to find latest backup
+MONITOR_TAG_NAME = "ControllerAuditValue" #Tag name to monitor in the PLC, needs to be type LINT
+STABILITY_SECONDS = 1800 #Time from last detected change to backup being queued
+POLL_INTERVAL = 2.0 #How often tag defined in "MONITOR_TAG_NAME" is checked
 
 EXTERNAL_PROGRAM = [
     r"python",
-    r"C:\Users\572546\OneDrive - TMNA\Documentation\PLC & HMI\Ladder Programs\Backup Automation\AutoUpload.py --save-dir",
-    r"C:\Users\572546\OneDrive - TMNA\Documentation\PLC & HMI\Ladder Programs\TR2\PRESS"
-    r"TR2_Gateway_IS\10.207.134.208\Backplane\2\A\192.168.1.10"
-]
-SCRIPT_DIR = r"C:\Users\Public\Documents\Studio 5000\Logix Designer SDK\python\Examples\AutomaticBackupProject"
+    r"C:\Users\User\BackupAutomation\QueueAutoUpload.py", #Path to backup automation program
+    r"--save-dir", #Specifier to save in a user defined directory
+    r"C:\Users\User\PLC_ProgramBackups\C0TR2\DSF", #Path to save the backups in
+    r"TR2_Gateway_IS\10.207.134.208\Backplane\2\A\192.168.1.100\Backplane\0" #Path to PLC, copy from program, requires FT Linx
+	]
+SCRIPT_DIR = r"C:\Users\User\BackupAutomation" #Directory to run the backup program from, usually the directory it is in.
 # =================================================================
 
 async def find_latest_acd(directory: str, starts_with: str | None = None) -> Path | None:
